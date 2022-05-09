@@ -1,0 +1,15 @@
+plugin: azure.azcollection.azure_rm
+auth_source: auto
+subscription_id: 0add5c8e-50a6-4821-be0f-7a47c879b009
+plain_host_names: true
+include_vm_resource_groups:
+  - uksouth-bastion
+conditional_groups:
+  core: true
+exclude_host_filters:
+- powerstate != "running"
+hostvar_expressions:
+  ansible_ssh_private_key_file: "'~/.ssh/id_bink_azure_terraform'"
+  ansible_user: "'terraform'"
+  ansible_connection: "'ssh'"
+  ansible_host: "'ssh.uksouth.bink.sh'"

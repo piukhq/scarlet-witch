@@ -1,0 +1,16 @@
+---
+plugin: azure.azcollection.azure_rm
+auth_source: auto
+subscription_id: 794aa787-ec6a-40dd-ba82-0ad64ed51639
+plain_host_names: true
+include_vmss_resource_groups:
+  - '*'
+conditional_groups:
+  dev: true
+exclude_host_filters:
+- powerstate != 'running'
+hostvar_expressions:
+  ansible_ssh_private_key_file: "'~/.ssh/id_bink_azure_terraform'"
+  ansible_user: "'terraform'"
+  ansible_connection: "'ssh'"
+  ansible_ssh_common_args: "'-o ProxyCommand=\"ssh -W %h:%p bastion\"'"
